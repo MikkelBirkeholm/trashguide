@@ -1,0 +1,35 @@
+.boxwrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  direction: var(--image-pos);
+  grid-auto-flow: dense;
+  gap: 10rem;
+  align-items: center;
+  > * {
+    direction: ltr;
+  }
+  > div {
+    display: grid;
+    place-content: center;
+    gap: 1rem;
+  }
+  h2 {
+    font-size: calc(2rem + 1vw);
+    span {
+      background-image: linear-gradient(
+        to bottom,
+        transparent 60%,
+        #62bb6580 40%
+      );
+      background-size: 100%;
+      background-repeat: repeat;
+    }
+  }
+  @include mobile {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    img {
+      max-height: 20vh;
+    }
+  }
+}

@@ -5,7 +5,7 @@ export const Slideshow = () => {
   return (
     <div>
       <Image
-        src="/slides/malerspande.jpg"
+        src="/Images/Slideshow/malerspande.jpg"
         alt=""
         style={{ objectFit: 'cover', width: '100vw', height: '60vh' }}
         width={1000}
