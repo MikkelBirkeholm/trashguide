@@ -85,6 +85,49 @@ button {
   font-weight: 600;
 }
 
+.cta {
+  background-color: #daeeda;
+  width: fit-content;
+  padding: 3rem;
+  text-align: center;
+  border-radius: 1rem;
+  margin: auto;
+  translate: 0 -50%;
+  isolation: isolate;
+  box-shadow: $shadow;
+  h2 {
+    font-size: calc(0.8rem + 0.8vw);
+    font-weight: 500;
+  }
+  > div {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}
+
+.alt-btn {
+  position: relative;
+  padding: $btn-padding;
+  font-weight: 600;
+  &:hover {
+    &::after {
+      right: -0.3rem;
+      opacity: 1;
+    }
+  }
+  &::after {
+    content: '→';
+    position: absolute;
+    top: 0.4rem;
+    right: 0;
+    opacity: 0;
+    transition: right 300ms;
+  }
+}
+
 img,
 picture,
 video,
