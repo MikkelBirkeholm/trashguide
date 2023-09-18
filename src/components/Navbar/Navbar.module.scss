@@ -1,5 +1,31 @@
 .navbar {
   ul {
-    @include flex(row, center, center, 1rem);
+    position: relative;
+    width: fit-content;
+    @include flex(row, center, center, 0rem);
+    &:has(a[data-selected='true']) {
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        height: 2px;
+        scale: var(--_width, 0.125) 1;
+        translate: var(--_left, 0) 0;
+        transform-origin: left;
+        transition:
+          scale 200ms,
+          translate 200ms;
+        background: $clr-accent;
+      }
+    }
+    li {
+      a {
+        position: relative;
+        // border-bottom: 1px solid hsl(0 0% 30%);
+        padding: 0.5rem;
+      }
+    }
   }
 }

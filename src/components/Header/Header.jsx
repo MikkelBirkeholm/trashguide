@@ -1,8 +1,7 @@
 import Image from 'next/image'
 import { Navbar } from '../Navbar/Navbar'
-import { AuthButton } from '../User/AuthButton'
-import { Login } from '../User/Login'
 import styles from './Header.module.scss'
+import Link from 'next/link'
 
 export default function Header() {
   return (
@@ -19,13 +18,15 @@ export default function Header() {
       </div>
       <Navbar />
       <div className={styles.lock}>
-        <Image
-          src="/icon-locked.svg"
-          width={20}
-          height={20}
-          style={{ objectFit: 'contain' }}
-          alt=""
-        />
+        <Link href="/login">
+          <Image
+            src="/icon-locked.svg"
+            width={20}
+            height={20}
+            style={{ objectFit: 'contain' }}
+            alt=""
+          />
+        </Link>
       </div>
     </div>
   )
