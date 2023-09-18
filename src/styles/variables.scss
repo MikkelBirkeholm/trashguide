@@ -1,26 +1,30 @@
 @use 'sass:color';
 
-// colors
-$clr-primary: #313333;
-$clr-secondary: #90f996;
+// colors - base
+$clr-primary: #114d46;
+$clr-secondary: #d8eadb;
+$clr-third: #62bb65;
 $clr-accent: #5bb100;
-$clr-text: #aeb8b2;
-$clr-headings: color.scale($clr-secondary, $lightness: -50%, $saturation: 10%);
-$clr-links: color.scale($clr-text, $lightness: 10%, $saturation: 10%);
-$clr-links-hover: color.scale($clr-accent, $lightness: 50%, $saturation: 20%);
-$clr-disabled: #aeb8b2;
-
 $clr-white: #fff;
 
-$clr-background: color.scale($clr-primary, $lightness: -20%, $saturation: 10%);
+$clr-text: #232f44;
+$clr-headings: #222a41;
+$clr-disabled: #aeb8b2;
+$clr-background: $clr-white;
+
+// colors - special
+$clr-third-transparent: color.change($clr-third, $alpha: 0.2);
+$clr-links: color.scale($clr-text, $lightness: 10%, $saturation: 10%);
+$clr-links-hover: #6da830;
+$clr-button-hover: color.change($clr-primary, $alpha: 0.5);
 
 //fonts
 //   set up variables when importing fonts with fonts/next
-$font-main: var(--font-____);
-$font-heading: var(--font-_____);
+$font-main: var(--font-opensans);
+$font-heading: var(--font-opensans);
 
 //layout
-$btn-padding: 0.3rem 0.5rem;
+$btn-padding: 0.5rem 1.1rem;
 
 //mixins
 @mixin flex($direction: row, $justify: center, $align: center, $gap: 1rem) {
@@ -33,6 +37,11 @@ $btn-padding: 0.3rem 0.5rem;
 
 @mixin innerwidth {
   width: clamp(2ch, 1100px, 95vw);
+  margin: 0 auto;
+}
+
+@mixin headerFooterWidth {
+  width: clamp(2ch, 1300px, 95vw);
   margin: 0 auto;
 }
 

@@ -1,5 +1,13 @@
 .header {
-  @include flex(row, flex-end, flex-end, 1rem);
-  width: 100%;
+  @include flex(row, space-between, center, 1rem);
+  @include headerFooterWidth;
   padding: 1rem 0;
+}
+
+.lock {
+  background-color: $clr-third-transparent;
+  display: grid;
+  place-content: center;
+  border-radius: 20em;
+  padding: 0.4rem;
 }

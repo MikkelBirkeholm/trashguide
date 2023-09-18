@@ -11,16 +11,31 @@
 body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
-  background-color: $clr-background;
+  background-color: $clr-white;
+
   font-family: $font-main;
   color: $clr-text;
   min-height: 100vh;
   @include flex(column, space-between, center, 0rem);
-  @include innerwidth;
   main {
+    height: 100%;
     width: 100%;
+    background-image: linear-gradient(
+        to bottom,
+        $clr-third-transparent,
+        transparent
+      ),
+      url('/bg-wave.svg');
+    background-size:
+      100%,
+      100% auto;
+    background-repeat: no-repeat;
+    background-position: top, bottom;
     flex: 1;
-    @include flex(column, flex-start, flex-start, 2rem);
+    > .contentwrapper {
+      @include innerwidth;
+      @include flex(column, flex-start, flex-start, 0rem);
+    }
   }
 }
 
@@ -46,18 +61,28 @@ hr {
 button {
   background-color: $clr-primary;
   border: none;
-  color: $clr-links;
+  color: $clr-white;
   padding: $btn-padding;
+  border-radius: 5px;
   cursor: pointer;
+  a {
+    color: $clr-white;
+  }
   &:hover {
-    background-color: $clr-secondary;
-    color: $clr-primary;
+    background-color: $clr-button-hover;
   }
   &:disabled {
     cursor: not-allowed;
-    color: $clr-primary;
     background-color: $clr-disabled;
   }
+}
+
+.logowrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 1rem;
+  font-weight: 600;
 }
 
 img,

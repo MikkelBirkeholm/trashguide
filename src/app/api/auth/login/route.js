@@ -6,7 +6,7 @@ export async function POST(request) {
   const password = formData.get('password')
   const requestUrl = new URL(request.url)
 
-  const apiUrl = process.env.API_URL || 'http://localhost:4000'
+  const apiUrl = process.env.API_URL || 'http://localhost:3000'
 
   const headers = new Headers()
   headers.append('Content-Type', 'application/x-www-form-urlencoded')
@@ -36,7 +36,7 @@ export async function POST(request) {
     return new NextResponse(
       JSON.stringify({
         token: result.access_token,
-        user_id: result.user_id,
+        user_id: result.user.id,
         username: username,
       }),
       {

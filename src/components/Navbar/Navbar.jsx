@@ -13,21 +13,13 @@ export const Navbar = async () => {
           <Link href="/">Forside</Link>
         </li>
         <li>
-          <Link href="/about">Om Os</Link>
-        </li>
-        {token && (
-          <li>
-            <Link href="/min-side">Min Side</Link>
-          </li>
-        )}
-        <li>
-          <Link href="#">Link</Link>
+          <Link href="/sortering">Sortering</Link>
         </li>
         <li>
-          <Link href="#">Link</Link>
+          <Link href="/genbrugsstationer">Genbrugsstationer</Link>
         </li>
         <li>
-          <Link href="#">Link</Link>
+          <Link href="/bestil-beholder">Bestil Beholder</Link>
         </li>
       </ul>
     </nav>
