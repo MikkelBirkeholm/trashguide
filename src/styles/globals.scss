@@ -1,0 +1,105 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+*:not(dialog) {
+  margin: 0;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  background-color: $clr-background;
+  font-family: $font-main;
+  color: $clr-text;
+  min-height: 100vh;
+  @include flex(column, space-between, center, 0rem);
+  @include innerwidth;
+  main {
+    width: 100%;
+    flex: 1;
+    @include flex(column, flex-start, flex-start, 2rem);
+  }
+}
+
+dialog {
+  border: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  li {
+    padding: $btn-padding;
+  }
+}
+
+hr {
+  background-color: $clr-secondary;
+  border: none;
+  width: 100%;
+  height: 1px;
+}
+
+button {
+  background-color: $clr-primary;
+  border: none;
+  color: $clr-links;
+  padding: $btn-padding;
+  cursor: pointer;
+  &:hover {
+    background-color: $clr-secondary;
+    color: $clr-primary;
+  }
+  &:disabled {
+    cursor: not-allowed;
+    color: $clr-primary;
+    background-color: $clr-disabled;
+  }
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: $clr-links;
+  &:hover {
+    color: $clr-links-hover;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+  font-family: $font-heading;
+  color: $clr-headings;
+}
+
+.prewrap {
+  white-space: pre-wrap;
+}
+
+#root,
+#__next {
+  isolation: isolate;
+}

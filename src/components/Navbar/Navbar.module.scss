@@ -1,0 +1,5 @@
+.navbar {
+  ul {
+    @include flex(row, center, center, 1rem);
+  }
+}

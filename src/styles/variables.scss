@@ -1,0 +1,61 @@
+@use 'sass:color';
+
+// colors
+$clr-primary: #313333;
+$clr-secondary: #90f996;
+$clr-accent: #5bb100;
+$clr-text: #aeb8b2;
+$clr-headings: color.scale($clr-secondary, $lightness: -50%, $saturation: 10%);
+$clr-links: color.scale($clr-text, $lightness: 10%, $saturation: 10%);
+$clr-links-hover: color.scale($clr-accent, $lightness: 50%, $saturation: 20%);
+$clr-disabled: #aeb8b2;
+
+$clr-white: #fff;
+
+$clr-background: color.scale($clr-primary, $lightness: -20%, $saturation: 10%);
+
+//fonts
+//   set up variables when importing fonts with fonts/next
+$font-main: var(--font-____);
+$font-heading: var(--font-_____);
+
+//layout
+$btn-padding: 0.3rem 0.5rem;
+
+//mixins
+@mixin flex($direction: row, $justify: center, $align: center, $gap: 1rem) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  gap: $gap;
+}
+
+@mixin innerwidth {
+  width: clamp(2ch, 1100px, 95vw);
+  margin: 0 auto;
+}
+
+@mixin responsiveGrid($minwidth: 200px, $gap: 1rem, $fit: auto-fit) {
+  display: grid;
+  grid-template-columns: repeat($fit, minmax($minwidth, 1fr));
+  gap: $gap;
+}
+
+@mixin mobile {
+  @media (width < 600px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (width <= 800px) {
+    @content;
+  }
+}
+// styles only applied to desktop and above
+@mixin desktop-only {
+  @media (width > 800px) {
+    @content;
+  }
+}
