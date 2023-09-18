@@ -34,7 +34,8 @@ body {
     flex: 1;
     > .contentwrapper {
       @include innerwidth;
-      @include flex(column, flex-start, flex-start, 0rem);
+      @include flex(column, flex-start, flex-start, 4rem);
+      padding-bottom: 20vh;
     }
   }
 }
@@ -64,6 +65,7 @@ button {
   color: $clr-white;
   padding: $btn-padding;
   border-radius: 5px;
+  width: fit-content;
   cursor: pointer;
   a {
     color: $clr-white;
@@ -83,6 +85,49 @@ button {
   justify-content: flex-start;
   font-size: 1rem;
   font-weight: 600;
+}
+
+.cta {
+  background-color: #daeeda;
+  width: fit-content;
+  padding: 3rem;
+  text-align: center;
+  border-radius: 1rem;
+  margin: auto;
+  translate: 0 -50%;
+  isolation: isolate;
+  box-shadow: $shadow;
+  h2 {
+    font-size: calc(0.8rem + 0.8vw);
+    font-weight: 500;
+  }
+  > div {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}
+
+.alt-btn {
+  position: relative;
+  padding: $btn-padding;
+  font-weight: 600;
+  &:hover {
+    &::after {
+      right: -0.3rem;
+      opacity: 1;
+    }
+  }
+  &::after {
+    content: '→';
+    position: absolute;
+    top: 0.4rem;
+    right: 0;
+    opacity: 0;
+    transition: right 300ms;
+  }
 }
 
 img,
@@ -118,6 +163,11 @@ h6 {
   overflow-wrap: break-word;
   font-family: $font-heading;
   color: $clr-headings;
+}
+
+h2,
+h3 {
+  font-weight: 600;
 }
 
 .prewrap {

@@ -14,9 +14,12 @@ $clr-background: $clr-white;
 
 // colors - special
 $clr-third-transparent: color.change($clr-third, $alpha: 0.2);
-$clr-links: color.scale($clr-text, $lightness: 10%, $saturation: 10%);
+$clr-links: color.scale($clr-primary, $lightness: 10%, $saturation: 10%);
 $clr-links-hover: #6da830;
 $clr-button-hover: color.change($clr-primary, $alpha: 0.5);
+
+// details
+$shadow: 0 4px 0.5rem hsla(0, 100%, 0%, 0.2);
 
 //fonts
 //   set up variables when importing fonts with fonts/next
