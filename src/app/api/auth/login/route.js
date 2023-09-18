@@ -29,11 +29,9 @@ export async function POST(request) {
       throw new Error(`Request failed with status: ${response.status}`)
     }
     const result = await response.json()
-    const expireTime =
-      new Date(
-        'Mon Sep 17 2023 13:33:25 GMT+0200 (Central European Summer Time)'
-      ) +
-      60 * 60 * 24
+
+    // Expire time sættes på cookie, hvis den ikke skal være session based
+    // const expireTime = new Date() + 60 * 60 * 24
 
     return new NextResponse(
       JSON.stringify({
