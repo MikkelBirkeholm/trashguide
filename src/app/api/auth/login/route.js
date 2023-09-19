@@ -27,35 +27,39 @@ export async function POST(request) {
   }
 
   try {
-    const result = await fetch(`${apiUrl}/login`, requestOptions)
-      .then(function (response) {
-        return response.text()
+    const response = await fetch(`${apiUrl}/login`, requestOptions)
+
+    if (response.status == 200) {
+      const result = await response.json()
+
+      const cookieHeaders = new Headers()
+      cookieHeaders.append(
+        'Set-Cookie',
+        `token=${result.access_token}; Path=/;`
+      )
+      cookieHeaders.append('Set-Cookie', `user_id=${result.user.id}; Path=/;`)
+      cookieHeaders.append(
+        'Set-Cookie',
+        `user_firstname=${result.user.firstname}; Path=/;`
+      )
+      cookieHeaders.append(
+        'Set-Cookie',
+        `user_lastname=${result.user.lastname}; Path=/;`
+      )
+
+      return new NextResponse(JSON.stringify(result), {
+        status: 200,
+        headers: cookieHeaders,
       })
-      .then(function (data) {
-        return data
+    }
+    if (response.status == 401) {
+      return new NextResponse(JSON.stringify(response), {
+        status: response.status,
+        message: 'Uautoriseret',
       })
-
-    const token = JSON.parse(result)
-
-    const cookieHeaders = new Headers()
-    cookieHeaders.append('Set-Cookie', `token=${token.access_token}; Path=/;`)
-    cookieHeaders.append('Set-Cookie', `user_id=${token.user.id}; Path=/;`)
-    cookieHeaders.append(
-      'Set-Cookie',
-      `user_firstname=${token.user.firstname}; Path=/;`
-    )
-    cookieHeaders.append(
-      'Set-Cookie',
-      `user_lastname=${token.user.lastname}; Path=/;`
-    )
-
-    return new NextResponse(JSON.stringify(result), {
-      status: 200,
-      headers: cookieHeaders,
-    })
-    // }
+    }
   } catch (error) {
-    console.log(error)
+    console.log('catched', error)
   }
 
   // console.log('server side', response)

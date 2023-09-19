@@ -9,7 +9,7 @@ export default async function Page() {
     <div className={styles.loginPage}>
       <div>
         <Logo />
-        <h2>Log ind på Affaldsguiden for at anmelde stationer</h2>
+        <h1>Log ind på Affaldsguiden for at anmelde stationer</h1>
       </div>
       <div>
         <LoginForm />
