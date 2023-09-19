@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { Navbar } from '../Navbar/Navbar'
 import styles from './Header.module.scss'
 import Link from 'next/link'
+import { MobileNavbar } from '../Navbar/MobileNavbar'
 
 export default function Header() {
   return (
@@ -17,6 +18,8 @@ export default function Header() {
         <span>Affaldsguiden</span>
       </div>
       <Navbar />
+      <MobileNavbar />
+
       <div className={styles.lock}>
         <Link href="/login">
           <Image
