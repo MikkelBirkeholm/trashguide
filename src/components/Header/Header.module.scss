@@ -14,3 +14,27 @@
     display: none;
   }
 }
+.logOutBtn {
+  position: relative;
+
+  p {
+    position: absolute;
+    font-size: 0.7rem;
+    width: fit-content;
+    left: 0;
+    opacity: 0;
+    white-space: nowrap;
+    translate: -25% -15px;
+    background-color: $clr-primary;
+    color: $clr-white;
+    border-radius: $radius;
+    padding: 0.2rem 0.3rem;
+    transition: all 250ms;
+  }
+  &:hover {
+    p {
+      opacity: 1;
+      translate: -25% 0.5rem;
+    }
+  }
+}

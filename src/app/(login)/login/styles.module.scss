@@ -1,0 +1,15 @@
+.loginPage {
+  height: 100vh;
+  width: clamp(2ch, 900px, 95vw);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  place-content: center;
+  gap: 10rem;
+  > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+  }
+}

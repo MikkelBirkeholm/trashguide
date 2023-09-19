@@ -1,6 +1,6 @@
 'use client'
 import useUser from '@/utils/useUser'
-import { Login } from './Login'
+import { Login } from './LoginForm'
 import { Logout } from './Logout'
 import { useEffect, useState } from 'react'
 
