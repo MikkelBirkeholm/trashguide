@@ -9,11 +9,11 @@ export default async function Home() {
       <div className="cta">
         <h2>Find og anmeld genbrugsstationer</h2>
         <div>
-          <Link href="#">
+          <Link href="/genbrugsstationer">
             <button>Find station</button>
           </Link>
           <Link
-            href="#"
+            href="/login"
             className="alt-btn"
           >
             Log Ind
@@ -31,7 +31,9 @@ export default async function Home() {
             beholdere. Du får også tips og tricks til, hvordan du gør det nemt
             at sortere hjemme hos dig.
           </p>
-          <button>Se affaldsguide</button>
+          <Link href="/sortering">
+            <button>Se affaldsguide</button>
+          </Link>
         </TextImageBox>
         <TextImageBox
           imgPos="left"
@@ -42,7 +44,9 @@ export default async function Home() {
             Her kan du bestille nye affaldsbeholdere direkte hjem til din
             addresse
           </p>
-          <button>Bestil her</button>
+          <Link href="/bestil-beholder">
+            <button>Bestil her</button>
+          </Link>
         </TextImageBox>
       </div>
     </main>

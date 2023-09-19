@@ -1,5 +1,9 @@
 import React from 'react'
 
-export default function Page() {
-  return <div>About Page</div>
+export default async function Page() {
+  return (
+    <main>
+      <div className="contentwrapper">Sortering</div>
+    </main>
+  )
 }

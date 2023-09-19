@@ -10,4 +10,7 @@
   place-content: center;
   border-radius: 20em;
   padding: 0.4rem;
+  @include mobile {
+    display: none;
+  }
 }

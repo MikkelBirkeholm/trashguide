@@ -64,7 +64,7 @@ button {
   border: none;
   color: $clr-white;
   padding: $btn-padding;
-  border-radius: 5px;
+  border-radius: $radius;
   width: fit-content;
   cursor: pointer;
   a {
