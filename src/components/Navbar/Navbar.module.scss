@@ -28,13 +28,16 @@
       }
     }
   }
-  @include mobile {
+  @include tablet {
     display: none;
   }
 }
 
 .mobileNavbar {
   position: relative;
+  svg {
+    cursor: pointer;
+  }
   ul {
     position: absolute;
     background-color: $clr-background;
