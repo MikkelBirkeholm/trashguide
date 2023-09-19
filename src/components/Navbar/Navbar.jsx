@@ -1,9 +1,7 @@
 'use client'
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import styles from './Navbar.module.scss'
 import Link from 'next/link'
-import { ClickAwayListener } from '@mui/base/ClickAwayListener'
-
 import { usePathname } from 'next/navigation'
 
 export const Navbar = () => {
@@ -11,7 +9,6 @@ export const Navbar = () => {
   const newLinkRef = useRef()
   const activeLinkRef = useRef()
   const listRef = useRef()
-  const [open, setOpen] = useState(false)
 
   function handleClick(e) {
     // håndter hvilket link er klikket på (newlink) + hvilket allerede var aktivt (activelink)
@@ -41,8 +38,10 @@ export const Navbar = () => {
 
   useEffect(() => {
     // useEffect nødvendig for at sætte indikator korrekt på første pageload
-    const slug = pathname.slice(1)
-    if (slug) {
+    let slug = pathname.slice(1)
+    slug = slug.split('/')
+    slug = slug[0]
+    if (slug && !slug.includes('search-result')) {
       // på forsiden er slug false, derfor if statement her
       const initialPage = document.querySelector(`#${slug}`)
       activeLinkRef.current = initialPage

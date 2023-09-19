@@ -44,6 +44,8 @@
     border-radius: $radius;
     box-shadow: $shadow;
     right: 0;
+
+    z-index: 100;
     top: 120%;
     opacity: 0;
     translate: 0 20px;

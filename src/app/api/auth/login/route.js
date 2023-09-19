@@ -61,26 +61,4 @@ export async function POST(request) {
   } catch (error) {
     console.log('catched', error)
   }
-
-  // console.log('server side', response)
-  // const result = response
-
-  // Expire time sættes på cookie, hvis den ikke skal være session based
-  // const expireTime = new Date() + 60 * 60 * 24
-
-  //   return new NextResponse(
-  //     JSON.stringify({
-  //       token: result.access_token,
-  //       user_id: result.user.id,
-  //       username: username,
-  //     }),
-  //     {
-  //       status: 200,
-  //       headers: {
-  //         'Set-Cookie': `token=${result.access_token}; Path=/;`,
-  //       },
-  //     }
-  //   )
-
-  // return new Response('Cool')
 }

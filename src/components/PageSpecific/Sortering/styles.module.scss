@@ -1,0 +1,142 @@
+.sectionCard {
+  border-radius: 1rem;
+  overflow: hidden;
+  transition: scale 260ms;
+  box-shadow: $shadow;
+  a {
+    > div {
+      text-align: center;
+      padding: 0.4rem;
+      color: $clr-white;
+    }
+  }
+
+  &:hover {
+    scale: 1.05;
+  }
+}
+.cardsGrid {
+  width: 100%;
+  @include responsiveGrid(250px, 1rem, auto-fit);
+}
+
+.searchFormWrapper {
+  margin: 4rem auto;
+  width: clamp(2ch, 400px, 95vw);
+  text-align: center;
+  h1 {
+    font-size: 2rem;
+    color: $clr-accent;
+  }
+  h2 {
+    color: $clr-primary;
+  }
+}
+
+.searchForm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+
+  label {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+  button {
+    position: absolute;
+    background-color: transparent;
+    color: $clr-text;
+    right: 0.5rem;
+  }
+  input:not([type='submit']) {
+    border-radius: 2rem;
+    box-shadow: $shadow;
+    border: 1px solid $clr-secondary;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    width: 100%;
+    outline: none;
+  }
+}
+
+.sectionCardView {
+  background-color: $clr-white;
+  position: relative;
+  width: 100%;
+  background-color: $clr-lightgrey;
+  box-shadow: $shadow;
+  border-radius: 1rem;
+
+  .categoryHeader {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  &:has(input:checked) {
+    .foldOut {
+      grid-template-rows: 1fr;
+      padding: 1rem;
+    }
+    label {
+      svg {
+        rotate: 180deg;
+      }
+    }
+  }
+
+  label {
+    position: absolute;
+    background-color: $clr-text;
+
+    border-radius: 50%;
+    bottom: -1rem;
+    left: 50%;
+    transform: translateX(-50%);
+
+    input {
+      display: none;
+    }
+  }
+}
+.sectionOuterWrapper {
+  width: 100%;
+  border-radius: 1rem;
+  overflow: hidden;
+  background-color: $clr-white;
+  box-shadow: $shadow;
+  margin: 2rem 0;
+  padding-bottom: 2rem;
+}
+.foldOutsWrapper {
+  padding: 1rem;
+  @include flex(column, flex-start, center, 2rem);
+}
+.mainContent {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+
+  hgroup {
+    width: 100%;
+    padding: 2rem;
+    height: 100%;
+    h1 {
+      color: $clr-white;
+    }
+  }
+}
+
+.foldOut {
+  transition: grid-template-rows 500ms;
+  display: grid;
+  grid-template-rows: 0fr;
+  > div {
+    overflow: hidden;
+  }
+}
