@@ -1,0 +1,5 @@
+.locationGrid {
+  margin: 5rem 0;
+  width: 100%;
+  @include responsiveGrid(300px, 2rem, auto-fit);
+}

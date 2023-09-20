@@ -1,0 +1,85 @@
+.stationCard {
+  border-radius: 1rem;
+  box-shadow: $shadow;
+  display: flex;
+  flex-direction: column;
+  a {
+    .detailsWrapper {
+      background-color: $clr-white;
+      display: flex;
+      flex-direction: column;
+      border-radius: 0 0 1rem 1rem;
+      overflow: hidden;
+      padding: 1rem;
+      flex: 1;
+      hr {
+        background-color: $clr-grey;
+        margin-top: auto;
+        margin-bottom: 1rem;
+      }
+    }
+  }
+}
+.ratings {
+  display: flex;
+  p {
+    margin-left: auto;
+    color: $clr-grey;
+  }
+}
+
+.detailsWrapper {
+  background-color: $clr-white;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0 0 1rem 1rem;
+  overflow: hidden;
+  padding: 1rem;
+  flex: 1;
+}
+
+.mapWrapper {
+  border-radius: 1rem 1rem 0 0;
+  overflow: hidden;
+  flex: 1;
+  height: 200px;
+}
+
+.stationOuterWrapper {
+  width: 100%;
+  border-radius: 1rem;
+  overflow: hidden;
+  background-color: $clr-white;
+  box-shadow: $shadow;
+  margin: 2rem 0;
+  padding-bottom: 2rem;
+}
+
+.reviewForm {
+  display: flex;
+  flex-direction: column;
+  width: clamp(100px, 80%, 95vw);
+  margin: 2rem auto;
+  > div {
+    display: flex;
+    h3 {
+      margin-right: auto;
+    }
+  }
+  textarea {
+    border-radius: 1rem;
+    background-color: $clr-lightgrey;
+    padding: 1rem;
+    outline: none;
+    border: none;
+    resize: vertical;
+  }
+  button {
+    margin: 2rem auto;
+    display: flex;
+    gap: 1rem;
+    background-color: $clr-allowed;
+    color: $clr-allowed-text;
+    padding: 1rem 3rem;
+  }
+}
