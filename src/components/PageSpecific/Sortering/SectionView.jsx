@@ -2,13 +2,12 @@ import Image from 'next/image'
 import styles from './styles.module.scss'
 
 async function getCategoryData(id) {
-  const res = await fetch(`http://localhost:3001/category/details/${id}`)
+  const res = await fetch(`http://localhost:4000/category/details/${id}`)
   const data = await res.json()
   return data
 }
 
 export const SectionView = ({ data }) => {
-  console.log(data)
   return (
     <div className={styles.sectionOuterWrapper}>
       <div
@@ -40,7 +39,7 @@ export const SectionView = ({ data }) => {
   )
 }
 
-export const FoldOut = async ({ data }) => {
+const FoldOut = async ({ data }) => {
   const categoryData = await getCategoryData(data.id)
 
   return (
@@ -58,19 +57,49 @@ export const FoldOut = async ({ data }) => {
 
       <div className={styles.foldOut}>
         <div>
-          <h3>Hvad modtager vi?</h3>
-          {categoryData.types.map((type) => {
-            return (
-              <div>
-                <p>{type.title}</p>
-                <span>{type.rules.is_allowed ? 'Yes' : 'Nope'}</span>
-              </div>
-            )
-          })}
-
-          <ul></ul>
-          <h3>Hvad modtager vi ikke?</h3>
-          <ul></ul>
+          <div className={styles.isAllowed}>
+            <table className={styles.infoTable}>
+              <caption>
+                <h3>Hvad modtager vi?</h3>
+              </caption>
+              <thead>
+                <tr>
+                  <th>Item</th>
+                  <th>På station</th>
+                  <th>Hjemme</th>
+                </tr>
+              </thead>
+              <tbody>
+                {categoryData.types.map((type) => {
+                  if (type.rules.is_allowed) {
+                    return (
+                      <tr key={type.id}>
+                        <td>
+                          <p>{type.title}</p>
+                        </td>
+                        <td>{type.rules.is_station ? '✅' : '🚫'}</td>
+                        <td>{type.rules.is_home ? '✅' : '🚫'}</td>
+                      </tr>
+                    )
+                  }
+                })}
+              </tbody>
+            </table>
+          </div>
+          <div className={styles.notAllowed}>
+            <h3>Hvad modtager vi ikke?</h3>
+            <ul>
+              {categoryData.types.map((type) => {
+                if (!type.rules.is_allowed) {
+                  return (
+                    <li key={type.id}>
+                      <p>{type.title}</p>
+                    </li>
+                  )
+                }
+              })}
+            </ul>
+          </div>
         </div>
       </div>
       <label>

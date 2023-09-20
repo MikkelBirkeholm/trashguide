@@ -97,6 +97,7 @@
     bottom: -1rem;
     left: 50%;
     transform: translateX(-50%);
+    cursor: pointer;
 
     input {
       display: none;
@@ -139,4 +140,55 @@
   > div {
     overflow: hidden;
   }
+}
+
+.isAllowed {
+  width: clamp(600px, 100%, 100vw);
+  overflow: scroll;
+}
+
+.infoTable {
+  table-layout: fixed;
+  min-width: 800px;
+  width: 100%;
+  overflow: scroll;
+  text-align: left;
+  border-collapse: separate;
+  border-spacing: 0 0.75em;
+
+  p {
+    background-color: $clr-allowed;
+    padding: 0.2rem 0.5rem;
+    border-radius: $radius;
+    color: $clr-allowed-text;
+    font-size: 0.8rem;
+    width: fit-content;
+    font-weight: bold;
+  }
+  caption {
+    text-align: left;
+  }
+
+  td {
+    border-bottom: 1px solid #d4d4d4;
+  }
+}
+
+.notAllowed {
+  display: none;
+  ul {
+    @include flex(row, flex-start, center, 1rem);
+    flex-wrap: wrap;
+  }
+  li {
+    background-color: $clr-not-allowed;
+    padding: 0.2rem 0.5rem;
+    border-radius: $radius;
+    color: $clr-not-allowed-text;
+    font-size: 0.8rem;
+  }
+}
+
+.notAllowed:has(li) {
+  display: block;
 }

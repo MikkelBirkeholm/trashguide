@@ -9,7 +9,7 @@ export default function Search({ searchParams }) {
 
   useEffect(() => {
     async function getSearchResult() {
-      const res = await fetch(`http://localhost:3001/search/${search}`)
+      const res = await fetch(`http://localhost:4000/search/${search}`)
       const data = await res.json()
       setSearchResult(data)
       console.log(data)

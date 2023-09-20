@@ -4,7 +4,7 @@ import { SectionCard } from '@/components/PageSpecific/Sortering/SectionCard'
 import React from 'react'
 
 async function getSorted() {
-  const res = await fetch('http://localhost:3001/section')
+  const res = await fetch('http://localhost:4000/section')
   const data = await res.json()
   return data
 }

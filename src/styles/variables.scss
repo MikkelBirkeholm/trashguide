@@ -18,6 +18,10 @@ $clr-third-transparent: color.change($clr-third, $alpha: 0.2);
 $clr-links: color.scale($clr-primary, $lightness: 10%, $saturation: 10%);
 $clr-links-hover: #6da830;
 $clr-button-hover: color.change($clr-primary, $alpha: 0.5);
+$clr-allowed: #d8eadb;
+$clr-allowed-text: #3f7749;
+$clr-not-allowed: #ead8d8;
+$clr-not-allowed-text: #773f3f;
 
 // details
 $shadow: 0 4px 0.5rem hsla(0, 100%, 0%, 0.2);

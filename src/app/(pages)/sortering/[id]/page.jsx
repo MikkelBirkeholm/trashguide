@@ -11,7 +11,7 @@ import { SectionView } from '@/components/PageSpecific/Sortering/SectionView'
 // }
 
 async function getSectionDetails(id) {
-  const res = await fetch(`http://localhost:3001/section/${id}`)
+  const res = await fetch(`http://localhost:4000/section/${id}`)
   const data = await res.json()
   return data
 }

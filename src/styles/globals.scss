@@ -47,10 +47,58 @@ dialog {
 ul {
   list-style: none;
   padding: 0;
-  li {
-    padding: $btn-padding;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: $clr-links;
+  &:hover {
+    color: $clr-links-hover;
   }
 }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+  font-family: $font-heading;
+  color: $clr-headings;
+}
+
+h2,
+h3 {
+  font-weight: 600;
+}
+
+.prewrap {
+  white-space: pre-wrap;
+}
+
+#root,
+#__next {
+  isolation: isolate;
+}
+
+/* ---------------------------------- */
 
 hr {
   background-color: $clr-secondary;
@@ -134,51 +182,14 @@ button {
   }
 }
 
-img,
-picture,
-video,
-canvas,
-svg {
-  display: block;
-  max-width: 100%;
-}
-
-input,
-button,
-textarea,
-select {
-  font: inherit;
-}
-
-a {
-  text-decoration: none;
-  color: $clr-links;
-  &:hover {
-    color: $clr-links-hover;
+.sidebyside {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  @include mobile {
+    grid-template-columns: 1fr;
   }
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  overflow-wrap: break-word;
-  font-family: $font-heading;
-  color: $clr-headings;
-}
-
-h2,
-h3 {
-  font-weight: 600;
-}
-
-.prewrap {
-  white-space: pre-wrap;
-}
-
-#root,
-#__next {
-  isolation: isolate;
+  gap: 1rem;
+  label {
+    @include flex(column, center, flex-start, 0.5rem);
+  }
 }

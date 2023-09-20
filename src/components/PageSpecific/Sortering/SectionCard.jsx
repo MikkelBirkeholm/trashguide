@@ -1,9 +1,10 @@
 import Image from 'next/image'
-import React from 'react'
+
 import styles from './styles.module.scss'
 import Link from 'next/link'
+import { memo } from 'react'
 
-export const SectionCard = ({ id, title, color, filename, filepath }) => {
+export const SectionCard = memo(({ id, title, color, filename }) => {
   return (
     <div className={styles.sectionCard}>
       <Link href={`/sortering/${id}`}>
@@ -20,4 +21,4 @@ export const SectionCard = ({ id, title, color, filename, filepath }) => {
       </Link>
     </div>
   )
-}
+})
