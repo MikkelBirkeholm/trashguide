@@ -1,21 +1,11 @@
-'use client'
 import styles from './styles.module.scss'
 import Link from 'next/link'
-import { Wrapper, Status } from '@googlemaps/react-wrapper'
+
 import { RatingStar } from '@/components/Singles/RatingStar'
 
 import { calcReviewAvg } from '@/utils/calcReviewAvg'
-import { Spinner } from './Maps/Spinner'
-import { Map } from './Maps/Map'
 
-const render = (status) => {
-  switch (status) {
-    case Status.LOADING:
-      return <Spinner />
-    case Status.FAILURE:
-      return <p>Error!</p>
-  }
-}
+import { MapWrapper } from './Maps/MapWrapper'
 
 export const StationCard = ({ data }) => {
   const center = { lat: data.longtitude, lng: data.latitude }
@@ -34,16 +24,11 @@ export const StationCard = ({ data }) => {
     <div className={styles.stationCard}>
       <Link href={`/genbrugsstationer/${data.id}`}>
         <div className={styles.mapWrapper}>
-          <Wrapper
-            apiKey={process.env.NEXT_PUBLIC_MAP_KEY}
-            render={render}
-          >
-            <Map
-              center={center}
-              zoom={zoom}
-              disableZoom={true}
-            />
-          </Wrapper>
+          <MapWrapper
+            center={center}
+            zoom={zoom}
+            disableZoom={true}
+          />
         </div>
         <div className={styles.detailsWrapper}>
           <h2>{data.name}</h2>

@@ -1,6 +1,4 @@
 import { StationView } from '@/components/PageSpecific/Stationer/StationView'
-import { RatingStar } from '@/components/Singles/RatingStar'
-import { calcReviewAvg } from '@/utils/calcReviewAvg'
 
 async function getSectionDetails(id) {
   const res = await fetch(`http://localhost:4000/orgs/${id}`)
@@ -15,7 +13,10 @@ export default async function Page({ params }) {
   return (
     <main>
       <div className="contentwrapper">
-        <StationView data={details} />
+        <StationView
+          data={details}
+          org={id}
+        />
       </div>
     </main>
   )

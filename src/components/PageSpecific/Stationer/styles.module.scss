@@ -58,6 +58,7 @@
 .reviewForm {
   display: flex;
   flex-direction: column;
+  gap: 0.5rem;
   width: clamp(100px, 80%, 95vw);
   margin: 2rem auto;
   > div {
@@ -66,7 +67,8 @@
       margin-right: auto;
     }
   }
-  textarea {
+  textarea,
+  [type='text'] {
     border-radius: 1rem;
     background-color: $clr-lightgrey;
     padding: 1rem;
@@ -81,5 +83,50 @@
     background-color: $clr-allowed;
     color: $clr-allowed-text;
     padding: 1rem 3rem;
+  }
+}
+
+.reviewGrid {
+  @include responsiveGrid(300px, 1rem, auto-fit);
+  padding: 2rem;
+}
+
+.reviewWrapper {
+  font-size: 0.8rem;
+  display: grid;
+  grid-template-columns: 1fr 8fr;
+  gap: 1rem;
+  width: fit-content;
+  .reviewContent {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    p {
+      white-space: pre-wrap;
+    }
+  }
+  .imageContainer {
+    display: grid;
+    place-content: center;
+    background-color: $clr-primary;
+    width: 2rem;
+    height: 2rem;
+    color: $clr-white;
+    border-radius: 20rem;
+  }
+  .ratings {
+    scale: 0.8;
+    transform-origin: left;
+    margin: 0;
+  }
+  .contentHeader {
+    display: flex;
+    flex-direction: column;
+    span:first-of-type {
+      font-weight: bold;
+    }
+    span:last-of-type {
+      opacity: 0.5;
+    }
   }
 }

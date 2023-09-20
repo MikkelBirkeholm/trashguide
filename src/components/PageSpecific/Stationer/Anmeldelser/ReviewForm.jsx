@@ -1,15 +1,35 @@
 'use client'
 import { useForm, Controller } from 'react-hook-form'
 import styles from '../styles.module.scss'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { RatingStar } from '@/components/Singles/RatingStar'
+import { useRouter } from 'next/navigation'
 
-export const ReviewForm = () => {
+export const ReviewForm = ({ loggedIn, org }) => {
+  const router = useRouter()
   const [hoverRating, setHoverRating] = useState(0)
-  const { control, handleSubmit, register } = useForm()
+  const { control, handleSubmit, register, reset } = useForm()
+  const formRef = useRef()
 
-  const onSubmit = (data) => {
-    console.log('Submitted data:', data)
+  const onSubmit = async (data) => {
+    const formData = new FormData()
+    const today = new Date()
+    formData.append('subject', data.title)
+    formData.append('org_id', org)
+    formData.append('comment', data.review)
+    formData.append('num_stars', data.rating)
+    formData.append('date', today)
+
+    const res = await fetch('http://localhost:3000/api/reviews/post', {
+      method: 'post',
+      body: formData,
+    })
+    const resData = await res.json()
+    if (resData.newId) {
+      console.log('lykkedes!', resData)
+      reset()
+      router.refresh()
+    }
   }
 
   const renderStars = (rating, onChange) => {
@@ -35,47 +55,62 @@ export const ReviewForm = () => {
   }
 
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className={styles.reviewForm}
-    >
-      <div>
-        <h3>Skriv en kommentar</h3>
-        <Controller
-          name="rating"
-          control={control}
-          defaultValue={0}
-          render={({ field }) => renderStars(field.value, field.onChange)}
-        />
-      </div>
-      <textarea
-        {...register('review', { required: true })}
-        id="review"
-        rows="4"
-        cols="50"
-      />
-
-      <button type="submit">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="20.243"
-          height="20.243"
-          viewBox="0 0 20.243 20.243"
+    <>
+      {loggedIn ? (
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className={styles.reviewForm}
+          ref={formRef}
         >
-          <path
-            id="Shape"
-            d="M18.243,12.162a2.027,2.027,0,0,1-2.027,2.027H4.054L0,18.243V2.027A2.027,2.027,0,0,1,2.027,0H16.216a2.027,2.027,0,0,1,2.027,2.027Z"
-            transform="translate(1 1)"
-            fill="none"
-            stroke="#80ab87"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            fillRule="evenodd"
+          <div>
+            <h3>Skriv en kommentar</h3>
+            <Controller
+              name="rating"
+              control={control}
+              defaultValue={0}
+              render={({ field }) => renderStars(field.value, field.onChange)}
+            />
+          </div>
+          <input
+            placeholder="Overskrift"
+            type="text"
+            {...register('title', { required: true })}
           />
-        </svg>
-        Kommenter
-      </button>
-    </form>
+          <textarea
+            placeholder="Kommentar"
+            {...register('review', { required: true })}
+            id="review"
+            rows="4"
+            cols="50"
+          />
+
+          <button type="submit">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20.243"
+              height="20.243"
+              viewBox="0 0 20.243 20.243"
+            >
+              <path
+                id="Shape"
+                d="M18.243,12.162a2.027,2.027,0,0,1-2.027,2.027H4.054L0,18.243V2.027A2.027,2.027,0,0,1,2.027,0H16.216a2.027,2.027,0,0,1,2.027,2.027Z"
+                transform="translate(1 1)"
+                fill="none"
+                stroke="#80ab87"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                fillRule="evenodd"
+              />
+            </svg>
+            Kommenter
+          </button>
+        </form>
+      ) : (
+        <div className={styles.reviewForm}>
+          <span style={{ margin: 'auto' }}>Log ind for at kommentere</span>
+        </div>
+      )}
+    </>
   )
 }

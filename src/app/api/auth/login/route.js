@@ -1,5 +1,4 @@
 import { NextResponse } from 'next/server'
-import { Logger } from 'sass'
 
 // export const revalidate = 0
 
@@ -10,7 +9,7 @@ export async function POST(request) {
 
   const requestUrl = new URL(request.url)
 
-  const apiUrl = process.env.API_URL || 'http://localhost:3000'
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000'
 
   const headers = new Headers()
   headers.append('Content-Type', 'application/x-www-form-urlencoded')

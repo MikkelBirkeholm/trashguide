@@ -22,7 +22,7 @@ export const LoginForm = () => {
     formData.append('username', data.username)
     formData.append('password', data.password)
     try {
-      const res = await fetch('http://localhost:3001/api/auth/login', {
+      const res = await fetch('http://localhost:3000/api/auth/login', {
         method: 'post',
         body: formData,
       })
@@ -31,8 +31,6 @@ export const LoginForm = () => {
         const parsedRes = await res.json()
         sessionStorage.setItem('token', parsedRes.access_token)
         sessionStorage.setItem('user_id', parsedRes.user.id)
-        sessionStorage.setItem('user_firstname', parsedRes.user.firstname)
-        sessionStorage.setItem('user_lastname', parsedRes.user.lastname)
         router.push('/')
       }
       if (res.status == 401) {

@@ -1,22 +1,15 @@
-'use client'
 import { RatingStar } from '@/components/Singles/RatingStar'
 import { calcReviewAvg } from '@/utils/calcReviewAvg'
 import styles from './styles.module.scss'
-import { Map } from './Maps/Map'
-import { Wrapper, Status } from '@googlemaps/react-wrapper'
-import { Spinner } from './Maps/Spinner'
 import { ReviewForm } from './Anmeldelser/ReviewForm'
+import { MapWrapper } from './Maps/MapWrapper'
+import { cookies } from 'next/headers'
+import { Reviews } from './Anmeldelser/Reviews'
 
-const render = (status) => {
-  switch (status) {
-    case Status.LOADING:
-      return <Spinner />
-    case Status.FAILURE:
-      return <p>Error!</p>
-  }
-}
+export const StationView = async ({ data, org }) => {
+  const cookieStore = cookies()
+  const token = cookieStore.get('token')
 
-export const StationView = ({ data }) => {
   const center = { lat: data.longtitude, lng: data.latitude }
   const zoom = 11
 
@@ -32,16 +25,11 @@ export const StationView = ({ data }) => {
   return (
     <div className={styles.stationOuterWrapper}>
       <div className={styles.mapWrapper}>
-        <Wrapper
-          apiKey={process.env.NEXT_PUBLIC_MAP_KEY}
-          render={render}
-        >
-          <Map
-            center={center}
-            zoom={zoom}
-            disableZoom={false}
-          />
-        </Wrapper>
+        <MapWrapper
+          center={center}
+          zoom={zoom}
+          disableZoom={false}
+        />
       </div>
       <div className={styles.detailsWrapper}>
         <h1>{data.name}</h1>
@@ -53,7 +41,11 @@ export const StationView = ({ data }) => {
         <p>{data.country}</p>
       </div>
       <hr />
-      <ReviewForm />
+      <ReviewForm
+        loggedIn={!!token}
+        org={org}
+      />
+      <Reviews id={org} />
     </div>
   )
 }
