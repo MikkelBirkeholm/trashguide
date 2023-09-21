@@ -39,7 +39,7 @@ export const SectionView = ({ data }) => {
   )
 }
 
-const FoldOut = async ({ data }) => {
+export const FoldOut = async ({ data }) => {
   const categoryData = await getCategoryData(data.id)
 
   return (

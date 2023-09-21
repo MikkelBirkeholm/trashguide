@@ -48,4 +48,8 @@
 
 .resultWrapper {
   width: 100%;
+  display: grid;
+  place-content: center;
+  padding: 5rem 0;
+  gap: 1rem;
 }

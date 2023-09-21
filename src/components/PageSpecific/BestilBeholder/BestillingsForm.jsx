@@ -69,13 +69,11 @@ export const BestillingsForm = () => {
           router.push('/bestil-beholder/godkendt')
         }
         if (!res.status == 200) {
-          console.log('Brugernavn eller password er forkert')
-          setErrorMsg('Brugernavn eller password er forkert')
+          setErrorMsg('Noget gik galt. Prøv igen senere.')
         }
       } catch (error) {
         console.log(error)
       }
-      console.log('Posted?')
     }
 
     if (final) {
@@ -123,7 +121,6 @@ const StepOne = ({ callback, data }) => {
     }
     getBeholderListe()
   }, [])
-  console.log('step one', data)
 
   const choice = watch('beholder')
 

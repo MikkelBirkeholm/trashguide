@@ -1,7 +1,8 @@
 'use client'
-import Image from 'next/image'
+
 import React, { useEffect, useState } from 'react'
 import styles from './styles.module.scss'
+import Link from 'next/link'
 
 export default function Search({ searchParams }) {
   const search = searchParams.s
@@ -11,8 +12,15 @@ export default function Search({ searchParams }) {
     async function getSearchResult() {
       const res = await fetch(`http://localhost:4000/search/${search}`)
       const data = await res.json()
-      setSearchResult(data)
       console.log(data)
+      const categories = data.data.filter((item) => item.type === 'category')
+      const types = data.data.filter((item) => item.type === 'type')
+      setSearchResult({
+        count: data.num_result,
+        keyword: data.keyword,
+        categories: categories,
+        types: types,
+      })
     }
     if (search) {
       getSearchResult()
@@ -23,13 +31,40 @@ export default function Search({ searchParams }) {
     <main>
       {searchResult ? (
         <div className={styles.resultWrapper}>
-          <p>
-            Vi fandt {searchResult.num_result} resultater for '
-            {searchResult.keyword}'
-          </p>
-          {searchResult.data.map((item, i) => {
-            return <p key={i}>{item.title}</p>
-          })}
+          <h1>
+            Vi fandt {searchResult.count} resultater for '{searchResult.keyword}
+            '
+          </h1>
+          <div className={styles.results}>
+            <h2>Kategorier</h2>
+            <ul>
+              {searchResult.categories.map((item, i) => {
+                return (
+                  <li key={i}>
+                    <Link
+                      href={`http://localhost:3000/sortering/kategori/${item.id}`}
+                    >
+                      {item.title}
+                    </Link>
+                  </li>
+                )
+              })}
+            </ul>
+            <h2>Typer</h2>
+            <ul>
+              {searchResult.types.map((item, i) => {
+                return (
+                  <li key={i}>
+                    <Link
+                      href={`http://localhost:3000/sortering/type/${item.id}`}
+                    >
+                      {item.title}
+                    </Link>
+                  </li>
+                )
+              })}
+            </ul>
+          </div>
         </div>
       ) : (
         <p>Vi kunne ikke finde noget på din forespørgelse</p>
