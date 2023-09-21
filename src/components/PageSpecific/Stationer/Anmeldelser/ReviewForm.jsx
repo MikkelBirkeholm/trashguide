@@ -9,10 +9,17 @@ import Link from 'next/link'
 export const ReviewForm = ({ loggedIn, org }) => {
   const router = useRouter()
   const [hoverRating, setHoverRating] = useState(0)
-  const { control, handleSubmit, register, reset } = useForm()
+  const {
+    control,
+    handleSubmit,
+    register,
+    reset,
+    formState: { errors },
+  } = useForm()
   const formRef = useRef()
 
   const onSubmit = async (data) => {
+    // formater data
     const formData = new FormData()
     const today = new Date()
     formData.append('subject', data.title)
@@ -27,11 +34,13 @@ export const ReviewForm = ({ loggedIn, org }) => {
     })
     const resData = await res.json()
     if (resData.newId) {
+      // reset form og refresh side -- måske nok med kun refresh?
       reset()
       router.refresh()
     }
   }
 
+  // renderer stjerne-vælger
   const renderStars = (rating, onChange) => {
     return (
       <div style={{ display: 'flex' }}>
@@ -43,7 +52,7 @@ export const ReviewForm = ({ loggedIn, org }) => {
               filled={value <= (hoverRating || rating)}
               onClick={() => {
                 onChange(value)
-                setHoverRating(0) // Reset hover rating
+                setHoverRating(0)
               }}
               onMouseEnter={() => setHoverRating(value)}
               onMouseLeave={() => setHoverRating(0)}
@@ -63,26 +72,35 @@ export const ReviewForm = ({ loggedIn, org }) => {
           ref={formRef}
         >
           <div>
-            <h3>Skriv en kommentar</h3>
+            <h3>Skriv en anmeldelse</h3>
             <Controller
               name="rating"
               control={control}
               defaultValue={0}
+              rules={{ required: true }}
               render={({ field }) => renderStars(field.value, field.onChange)}
             />
           </div>
           <input
             placeholder="Overskrift"
             type="text"
-            {...register('title', { required: true })}
+            {...register('title', { required: 'Skal udfyldes' })}
           />
+          {errors.title && <p>{errors.title?.message}</p>}
           <textarea
             placeholder="Kommentar"
-            {...register('review', { required: true })}
+            {...register('review', {
+              required: 'Skal udfyldes',
+              minLength: {
+                value: 30,
+                message: 'Du skal skrive mindst 30 tegn',
+              },
+            })}
             id="review"
             rows="4"
             cols="50"
           />
+          {errors.review && <p>{errors.review?.message}</p>}
 
           <button type="submit">
             <svg

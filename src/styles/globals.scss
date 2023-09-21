@@ -149,6 +149,8 @@ button {
   justify-content: flex-start;
   font-size: 1rem;
   font-weight: 600;
+  user-select: none;
+  color: $clr-text;
 }
 
 .login-page {
@@ -188,6 +190,7 @@ button {
 }
 
 .arrow-right {
+  position: relative;
   &:hover {
     &::after {
       left: -0.3rem;
@@ -205,6 +208,7 @@ button {
 }
 
 .arrow-left {
+  position: relative;
   &:hover {
     &::after {
       right: -0.3rem;

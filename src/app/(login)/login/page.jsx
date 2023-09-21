@@ -7,20 +7,22 @@ import Link from 'next/link'
 
 export default async function Page() {
   return (
-    <div className={styles.loginPage}>
-      <div>
-        <Logo />
-        <h1>Log ind på Affaldsguiden for at anmelde stationer</h1>
+    <div>
+      <div className={styles.loginPage}>
+        <div>
+          <Logo />
+          <h1>Log ind på Affaldsguiden for at anmelde stationer</h1>
+          <Link
+            href="/"
+            className="alt-btn arrow-right"
+          >
+            Tilbage
+          </Link>
+        </div>
+        <div>
+          <LoginForm />
+        </div>
       </div>
-      <div>
-        <LoginForm />
-      </div>
-      <Link
-        href="/"
-        className="alt-btn arrow-right"
-      >
-        Tilbage
-      </Link>
     </div>
   )
 }

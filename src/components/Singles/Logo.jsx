@@ -1,8 +1,13 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 export const Logo = () => {
   return (
-    <div className="logowrapper">
+    <Link
+      className="logowrapper"
+      href="/"
+      alt="Til forsiden"
+    >
       <Image
         src="/logo-small.png"
         width={30}
@@ -11,6 +16,6 @@ export const Logo = () => {
         alt=""
       />
       <span>Affaldsguiden</span>
-    </div>
+    </Link>
   )
 }

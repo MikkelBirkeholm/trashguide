@@ -1,4 +1,4 @@
-import '../../../styles/globals.scss'
+import '../../styles/globals.scss'
 
 // Setup Fonts
 import { Open_Sans } from 'next/font/google'
@@ -14,7 +14,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="da-DK">
-      <body className={open_sans.className + ' login-page'}>{children}</body>
+      <body className={open_sans.className}>
+        <main>
+          <div className="contentwrapper">{children}</div>
+        </main>
+      </body>
     </html>
   )
 }

@@ -30,6 +30,7 @@
     border-radius: $radius;
     padding: 0.2rem 0.3rem;
     transition: all 250ms;
+    z-index: 100;
   }
   &:hover {
     p {

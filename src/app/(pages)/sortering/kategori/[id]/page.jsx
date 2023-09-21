@@ -17,7 +17,10 @@ export default async function Page({ params }) {
 
   return (
     <main>
-      <div className="contentwrapper">
+      <div
+        className="contentwrapper"
+        style={{ padding: '4rem 0' }}
+      >
         <FoldOut data={details} />
       </div>
     </main>

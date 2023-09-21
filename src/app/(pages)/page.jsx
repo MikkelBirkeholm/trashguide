@@ -2,7 +2,11 @@ import { Slideshow } from '@/components/Slideshow/Slideshow'
 import { TextImageBox } from '@/components/TextImageBox/TextImageBox'
 import Link from 'next/link'
 
+import { cookies } from 'next/headers'
+
 export default async function Home() {
+  const cookieStore = cookies()
+  const token = cookieStore.get('token')
   return (
     <main>
       <Slideshow />
@@ -12,12 +16,14 @@ export default async function Home() {
           <Link href="/genbrugsstationer">
             <button>Find station</button>
           </Link>
-          <Link
-            href="/login"
-            className="alt-btn arrow-left"
-          >
-            Log Ind
-          </Link>
+          {!token && (
+            <Link
+              href="/login"
+              className="alt-btn arrow-left"
+            >
+              Log Ind
+            </Link>
+          )}
         </div>
       </div>
       <div className="contentwrapper">

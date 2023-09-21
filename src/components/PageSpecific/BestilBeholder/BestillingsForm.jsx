@@ -109,7 +109,13 @@ export const BestillingsForm = () => {
 
 const StepOne = ({ callback, data }) => {
   const [beholderData, setBeholderData] = useState()
-  const { handleSubmit, register, watch, setValue } = useForm({
+  const {
+    handleSubmit,
+    register,
+    watch,
+    setValue,
+    formState: { errors },
+  } = useForm({
     defaultValues: { beholder: data },
   })
 
@@ -135,9 +141,8 @@ const StepOne = ({ callback, data }) => {
     >
       <h1>Vælg type</h1>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio ipsa enim
-        ea doloremque totam a earum vitae sit, vero, ratione ab autem dolore
-        repellat rerum! Quidem officia exercitationem placeat est!
+        Vælg hvilken type beholder, du vil bestille. Skal du bestille flere
+        beholdere, skal du lave flere bestillinger.
       </p>
       <fieldset>
         {beholderData?.map((bh) => {
@@ -147,7 +152,9 @@ const StepOne = ({ callback, data }) => {
                 type="radio"
                 key={bh.name}
                 value={bh.id}
-                {...register('beholder', { required: 'Du skal vælge en' })}
+                {...register('beholder', {
+                  required: 'Du skal vælge en beholder',
+                })}
               />
               <Image
                 src={`/Images/Icons/${bh.icon_filename}`}
@@ -159,6 +166,9 @@ const StepOne = ({ callback, data }) => {
             </label>
           )
         })}
+        {errors.beholder && (
+          <p className={styles.errorMsg}>{errors.beholder?.message}</p>
+        )}
       </fieldset>
       <button>Videre</button>
     </form>
@@ -203,9 +213,8 @@ const StepTwo = ({ data, callback, finalSubmitCallback }) => {
     >
       <h1>Hvor skal vi levere?</h1>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio ipsa enim
-        ea doloremque totam a earum vitae sit, vero, ratione ab autem dolore
-        repellat rerum! Quidem officia exercitationem placeat est!
+        Indtast dit fulde navn, telefonnummer, email og adresse. Du modtager en
+        bekræftelse på mail.
       </p>
       <label>
         <span>Navn</span>
@@ -215,7 +224,7 @@ const StepTwo = ({ data, callback, finalSubmitCallback }) => {
           {...register('navn', {
             required: 'Du skal indtaste dit navn',
             pattern: {
-              value: /^[a-zA-Z]{2,40}(?: +[a-zA-Z]{2,40})+$/,
+              value: /^[a-zæøåA-ZÆØÅ]{2,40}(?: +[a-zæøåA-ZÆØÅ]{2,40})+$/,
               message: 'Skriv dit fulde navn',
             },
           })}
@@ -249,6 +258,10 @@ const StepTwo = ({ data, callback, finalSubmitCallback }) => {
             type="tel"
             {...register('telefon', {
               required: 'Indtast telefonnummer',
+              pattern: {
+                value: /^[\+\(\s.\-\/\d\)]{5,15}$/,
+                message: 'Ugyldigt telefonnummer',
+              },
             })}
           />
           {errors.telefon && (

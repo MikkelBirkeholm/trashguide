@@ -9,8 +9,8 @@ export default function LockButton() {
   return (
     <div className={styles.lock}>
       {token ? (
-        <a
-          href="/api/auth/logout"
+        <Link
+          href="/min-side"
           className={styles.logOutBtn}
         >
           <Image
@@ -20,8 +20,8 @@ export default function LockButton() {
             style={{ objectFit: 'contain' }}
             alt=""
           />
-          <p>Log ud</p>
-        </a>
+          <p>Se din side</p>
+        </Link>
       ) : (
         <Link
           href="/login"

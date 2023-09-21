@@ -4,14 +4,7 @@ import { Wrapper, Status } from '@googlemaps/react-wrapper'
 import styles from './styles.module.scss'
 import { Spinner } from './Spinner'
 
-const render = (status) => {
-  switch (status) {
-    case Status.LOADING:
-      return <Spinner />
-    case Status.FAILURE:
-      return <p>Error!</p>
-  }
-}
+// selve map-component. Denne skal wrappes i en <Wrapper> i en parent component, før google.maps er tilgængelig.
 
 export const Map = ({ center, zoom, disableZoom }) => {
   const ref = useRef()

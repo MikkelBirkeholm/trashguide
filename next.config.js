@@ -4,6 +4,7 @@ const nextConfig = {
   sassOptions: {
     prependData: `@import "src/styles/variables.scss";`,
   },
+  // reactStrictMode: false,
   images: {
     remotePatterns: [
       {

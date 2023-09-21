@@ -1,21 +1,31 @@
 .stationCard {
   border-radius: 1rem;
   box-shadow: $shadow;
-  display: flex;
-  flex-direction: column;
+  background-color: $clr-white;
+
+  font-size: 0.8rem;
   a {
-    .detailsWrapper {
-      background-color: $clr-white;
+    color: $clr-text;
+    height: 420px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .mapWrapper {
+      flex: 2;
+    }
+
+    .cardDetails {
       display: flex;
-      flex-direction: column;
-      border-radius: 0 0 1rem 1rem;
-      overflow: hidden;
-      padding: 1rem;
       flex: 1;
+      flex-direction: column;
+      justify-content: space-between;
+      border-radius: 0 0 1rem 1rem;
+
+      padding: 1rem;
       hr {
         background-color: $clr-grey;
         margin-top: auto;
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem;
       }
     }
   }
@@ -41,8 +51,8 @@
 .mapWrapper {
   border-radius: 1rem 1rem 0 0;
   overflow: hidden;
-  flex: 1;
-  height: 200px;
+  flex: 2;
+  height: 300px;
 }
 
 .stationOuterWrapper {
@@ -52,7 +62,11 @@
   background-color: $clr-white;
   box-shadow: $shadow;
   margin: 2rem 0;
+
   padding-bottom: 2rem;
+  .detailsWrapper {
+    flex: 1;
+  }
 }
 
 .reviewForm {

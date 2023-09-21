@@ -1,0 +1,21 @@
+.minSide {
+  @include innerwidth;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  > p {
+    font-weight: bold;
+  }
+
+  ul {
+    @include responsiveGrid(200px, 1rem, auto-fit);
+    li {
+      display: flex;
+      flex-direction: column;
+    }
+    span {
+      font-weight: bold;
+    }
+  }
+}

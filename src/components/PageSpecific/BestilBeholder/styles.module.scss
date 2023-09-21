@@ -4,6 +4,7 @@
   margin: 5rem auto;
   display: grid;
   grid-template-columns: 1fr 2fr;
+  box-shadow: $shadow;
   @include mobile {
     grid-template-columns: 1fr;
   }

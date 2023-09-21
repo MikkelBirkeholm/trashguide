@@ -30,7 +30,7 @@ export const StationCard = ({ data }) => {
             disableZoom={true}
           />
         </div>
-        <div className={styles.detailsWrapper}>
+        <div className={styles.cardDetails}>
           <h2>{data.name}</h2>
           <p>{data.address}</p>
           <p>

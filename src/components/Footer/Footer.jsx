@@ -14,7 +14,7 @@ export default function Footer() {
               style={{ objectFit: 'contain' }}
               alt=""
             />
-            <span>Affaldsguiden</span>
+            <span style={{ color: '#fff' }}>Affaldsguiden</span>
           </div>
           <p>
             Vi arbejder for at informere om korrekt affaldssortering. Ved at
