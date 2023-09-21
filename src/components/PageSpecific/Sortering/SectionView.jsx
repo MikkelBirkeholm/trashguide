@@ -64,8 +64,8 @@ const FoldOut = async ({ data }) => {
               </caption>
               <thead>
                 <tr>
-                  <th>Item</th>
-                  <th>På station</th>
+                  <th></th>
+                  <th>Station</th>
                   <th>Hjemme</th>
                 </tr>
               </thead>

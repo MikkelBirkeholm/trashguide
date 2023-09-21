@@ -12,7 +12,6 @@ export const LoginForm = () => {
   const {
     register,
     handleSubmit,
-    watch,
     setValue,
     formState: { errors },
   } = useForm()
@@ -58,6 +57,7 @@ export const LoginForm = () => {
       >
         Benyt demo-bruger
       </a>
+      {errors.navn && <p>{errors.navn?.message}</p>}
       <form onSubmit={handleSubmit(onSubmit)}>
         <label>
           <span>Brugernavn</span>

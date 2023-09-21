@@ -87,7 +87,7 @@
 }
 
 .reviewGrid {
-  @include responsiveGrid(300px, 1rem, auto-fit);
+  @include responsiveGrid(300px, 1rem, auto-fill);
   padding: 2rem;
 }
 
@@ -96,7 +96,7 @@
   display: grid;
   grid-template-columns: 1fr 8fr;
   gap: 1rem;
-  width: fit-content;
+
   .reviewContent {
     display: flex;
     flex-direction: column;

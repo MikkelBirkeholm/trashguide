@@ -4,6 +4,7 @@ import styles from '../styles.module.scss'
 import { useRef, useState } from 'react'
 import { RatingStar } from '@/components/Singles/RatingStar'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 
 export const ReviewForm = ({ loggedIn, org }) => {
   const router = useRouter()
@@ -26,7 +27,6 @@ export const ReviewForm = ({ loggedIn, org }) => {
     })
     const resData = await res.json()
     if (resData.newId) {
-      console.log('lykkedes!', resData)
       reset()
       router.refresh()
     }
@@ -108,7 +108,17 @@ export const ReviewForm = ({ loggedIn, org }) => {
         </form>
       ) : (
         <div className={styles.reviewForm}>
-          <span style={{ margin: 'auto' }}>Log ind for at kommentere</span>
+          <span style={{ margin: 'auto' }}>
+            Log ind for at kommentere
+            <br />
+          </span>
+          <Link
+            href="/login"
+            className="alt-btn"
+            style={{ margin: 'auto' }}
+          >
+            Log Ind
+          </Link>{' '}
         </div>
       )}
     </>

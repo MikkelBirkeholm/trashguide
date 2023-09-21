@@ -1,0 +1,214 @@
+.outerWrapper {
+  width: clamp(2ch, 900px, 95vw);
+  min-height: 500px;
+  margin: 5rem auto;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+  border-radius: 1rem;
+  overflow: hidden;
+  > div {
+    padding: 1rem;
+  }
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: $clr-grey;
+}
+.stepOne {
+  display: flex;
+  flex-direction: column;
+
+  button {
+    margin-left: auto;
+  }
+  fieldset {
+    border: none;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr 1fr;
+    width: clamp(2ch, 80%, 90vw);
+    margin: auto;
+    padding: 2rem;
+    @include mobile {
+      grid-template-columns: 1fr;
+    }
+    label {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      padding: 1rem;
+      background-color: $clr-white;
+      border-radius: $radius;
+      box-shadow: $shadow;
+      &:has(:checked) {
+        background-color: $clr-third-transparent;
+      }
+      input {
+        margin-left: auto;
+      }
+    }
+  }
+}
+
+.buttonWrapper {
+  display: flex;
+  gap: 1rem;
+  margin-left: auto;
+}
+
+.stepTwo {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+
+  .inputRow {
+    @include responsiveGrid(200px, 1rem, auto-fit);
+  }
+
+  label {
+    flex: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    svg {
+      cursor: pointer;
+      position: absolute;
+      right: 0.5rem;
+      top: 0.5rem;
+      user-select: none;
+    }
+
+    span {
+      transition: all 350ms;
+      position: absolute;
+      width: fit-content;
+      left: 0.5rem;
+      top: -1.2rem;
+      opacity: 1;
+      color: $clr-primary;
+    }
+
+    &:not(:has(:placeholder-shown)) {
+      span {
+        font-size: 0.8rem;
+      }
+    }
+
+    &:has(:placeholder-shown) {
+      span {
+        position: absolute;
+        left: 0.5rem;
+        opacity: 1;
+        top: 0.3rem;
+        color: $clr-disabled;
+      }
+    }
+    &:has(input:focus-within) {
+      span {
+        position: absolute;
+        left: 0.5rem;
+        top: -1.2rem;
+        opacity: 1;
+        font-size: 0.8rem;
+        color: $clr-primary;
+      }
+    }
+  }
+  .errorMsg {
+    width: fit-content;
+    background-color: $clr-not-allowed;
+    color: $clr-not-allowed-text;
+    box-shadow: $shadow;
+    font-size: 0.8rem;
+    padding: 0.2rem;
+    border-radius: $radius;
+  }
+
+  input:not([type='submit']) {
+    border-radius: $radius;
+    border: 1px solid $clr-secondary;
+    padding: 0.3rem 0.5rem;
+    font-size: 0.9rem;
+    &::placeholder {
+      color: transparent;
+    }
+  }
+}
+
+.indicatorWrapper {
+  background-color: $clr-primary;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.indicator {
+  position: relative;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  color: $clr-primary;
+  gap: 3rem;
+  &::after {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 2px;
+    background-image: linear-gradient(
+      to bottom,
+      transparent 32%,
+      $clr-allowed 32%,
+      $clr-allowed 50%,
+      $clr-darkgrey 50%,
+      $clr-darkgrey,
+      transparent
+    );
+    left: 50%;
+    translate: -1px 0;
+  }
+  &:has(span[data-step='true']:nth-child(2)) {
+    &::after {
+      background-image: linear-gradient(
+        to bottom,
+        transparent 32%,
+        $clr-allowed 28%,
+        $clr-allowed 68%,
+        transparent 68%
+      );
+    }
+  }
+  span {
+    position: relative;
+    z-index: 20;
+    display: grid;
+    place-content: center;
+    padding: 1rem;
+    height: 1rem;
+    width: 1rem;
+    background-color: $clr-darkgrey;
+    color: $clr-white;
+    border-radius: 20rem;
+    transition: all 500ms;
+  }
+  [data-step='true'] {
+    color: $clr-primary;
+    position: relative;
+    background-color: $clr-allowed;
+    &::after {
+      content: '';
+      position: absolute;
+      border-radius: 20rem;
+      width: 130%;
+      height: 130%;
+      left: -15%;
+      top: -15%;
+      border: 2px solid $clr-allowed;
+    }
+  }
+}

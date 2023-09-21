@@ -24,7 +24,10 @@ export const Reviews = async ({ id }) => {
           ))
           const dates = convertDates(review.created_at)
           return (
-            <div className={styles.reviewWrapper}>
+            <div
+              className={styles.reviewWrapper}
+              key={review.id}
+            >
               <div className={styles.imageContainer}>img</div>
               <div className={styles.reviewContent}>
                 <div className={styles.contentHeader}>

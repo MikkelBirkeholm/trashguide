@@ -137,21 +137,21 @@
   transition: grid-template-rows 500ms;
   display: grid;
   grid-template-rows: 0fr;
+  width: 100%;
+  overflow-x: scroll;
   > div {
     overflow: hidden;
   }
 }
 
 .isAllowed {
-  width: clamp(600px, 100%, 100vw);
-  overflow: scroll;
+  width: 100%;
+  overflow-x: scroll;
 }
 
 .infoTable {
   table-layout: fixed;
-  min-width: 800px;
-  width: 100%;
-  overflow: scroll;
+  min-width: 100%;
   text-align: left;
   border-collapse: separate;
   border-spacing: 0 0.75em;

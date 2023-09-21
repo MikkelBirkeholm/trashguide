@@ -14,7 +14,7 @@ export default async function Home() {
           </Link>
           <Link
             href="/login"
-            className="alt-btn"
+            className="alt-btn arrow-left"
           >
             Log Ind
           </Link>

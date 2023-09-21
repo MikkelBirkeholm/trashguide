@@ -3,6 +3,7 @@ import styles from './styles.module.scss'
 
 import { Logo } from '@/components/Singles/Logo'
 import { LoginForm } from '@/components/User/LoginForm'
+import Link from 'next/link'
 
 export default async function Page() {
   return (
@@ -14,6 +15,12 @@ export default async function Page() {
       <div>
         <LoginForm />
       </div>
+      <Link
+        href="/"
+        className="alt-btn arrow-right"
+      >
+        Tilbage
+      </Link>
     </div>
   )
 }
