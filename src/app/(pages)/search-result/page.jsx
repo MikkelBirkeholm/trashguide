@@ -12,9 +12,11 @@ export default function Search({ searchParams }) {
     async function getSearchResult() {
       const res = await fetch(`http://localhost:4000/search/${search}`)
       const data = await res.json()
-      console.log(data)
+
+      // sorter resultat i hhv kategorier og typer
       const categories = data.data.filter((item) => item.type === 'category')
       const types = data.data.filter((item) => item.type === 'type')
+
       setSearchResult({
         count: data.num_result,
         keyword: data.keyword,

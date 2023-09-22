@@ -1,7 +1,5 @@
 import { NextResponse } from 'next/server'
 
-// export const revalidate = 0
-
 export async function POST(request) {
   const formData = await request.formData()
   const username = formData.get('username')
@@ -37,14 +35,6 @@ export async function POST(request) {
         `token=${result.access_token}; Path=/;`
       )
       cookieHeaders.append('Set-Cookie', `user_id=${result.user.id}; Path=/;`)
-      cookieHeaders.append(
-        'Set-Cookie',
-        `user_firstname=${result.user.firstname}; Path=/;`
-      )
-      cookieHeaders.append(
-        'Set-Cookie',
-        `user_lastname=${result.user.lastname}; Path=/;`
-      )
 
       return new NextResponse(JSON.stringify(result), {
         status: 200,

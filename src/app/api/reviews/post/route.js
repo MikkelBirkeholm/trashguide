@@ -6,8 +6,6 @@ export async function POST(request) {
   const cookieStore = cookies()
   const token = cookieStore.get('token')
 
-  const requestUrl = new URL(request.url)
-
   const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000'
 
   const headers = new Headers()

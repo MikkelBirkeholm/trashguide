@@ -81,14 +81,6 @@ export const BestillingsForm = () => {
     }
   }, [final])
 
-  // TO DO:
-  // ------------
-  // Opret de rette felter i StepTwo så de matcher de nødvendige (se postman)
-  // Lav post til bestilling
-  // Lav slides på forside
-  // Lav 'min side' evt
-  // -------------
-
   return (
     <div className={styles.outerWrapper}>
       <div className={styles.indicatorWrapper}>

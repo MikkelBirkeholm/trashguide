@@ -11,7 +11,7 @@ export const Slideshow = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       goToNextImage()
-    }, 3000)
+    }, 5000)
 
     return () => clearTimeout(timer)
   }, [currentImageIndex])
@@ -60,6 +60,7 @@ export const Slideshow = () => {
         src={`/Images/Slideshow/${images[currentImageIndex]}`}
         alt=""
         fill={true}
+        priority={true}
       />
       <svg
         xmlns="http://www.w3.org/2000/svg"

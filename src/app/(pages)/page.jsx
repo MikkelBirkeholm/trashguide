@@ -1,8 +1,7 @@
 import { Slideshow } from '@/components/Slideshow/Slideshow'
 import { TextImageBox } from '@/components/TextImageBox/TextImageBox'
-import Link from 'next/link'
-
 import { cookies } from 'next/headers'
+import Link from 'next/link'
 
 export default async function Home() {
   const cookieStore = cookies()

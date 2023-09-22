@@ -1,8 +1,6 @@
 'use client'
-import { useEffect, useRef, useState } from 'react'
-import { Wrapper, Status } from '@googlemaps/react-wrapper'
+import { useEffect, useRef } from 'react'
 import styles from './styles.module.scss'
-import { Spinner } from './Spinner'
 
 // selve map-component. Denne skal wrappes i en <Wrapper> i en parent component, før google.maps er tilgængelig.
 

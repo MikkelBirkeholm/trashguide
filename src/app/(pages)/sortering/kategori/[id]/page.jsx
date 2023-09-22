@@ -1,10 +1,5 @@
 import { FoldOut } from '@/components/PageSpecific/Sortering/SectionView'
 
-//   return showIDs.map((id) => ({
-//     slug: id,
-//   }))
-// }
-
 async function getCategoryData(id) {
   const res = await fetch(`http://localhost:4000/category/details/${id}`)
   const data = await res.json()

@@ -88,7 +88,7 @@ export const ReviewForm = ({ loggedIn, org }) => {
           />
           {errors.title && <p>{errors.title?.message}</p>}
           <textarea
-            placeholder="Kommentar"
+            placeholder="Skriv om din oplevelse med denne station"
             {...register('review', {
               required: 'Skal udfyldes',
               minLength: {
@@ -127,7 +127,7 @@ export const ReviewForm = ({ loggedIn, org }) => {
       ) : (
         <div className={styles.reviewForm}>
           <span style={{ margin: 'auto' }}>
-            Log ind for at kommentere
+            Log ind for at anmelde
             <br />
           </span>
           <Link

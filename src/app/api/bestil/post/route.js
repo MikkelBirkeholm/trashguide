@@ -34,7 +34,7 @@ export async function POST(request) {
       return NextResponse.json({ data: result }, { status: 200 })
     }
   } catch (error) {
-    console.log(error) // ---> I want to see what this prints server side, in your terminal
+    console.log(error)
     const message = error instanceof Error ? error.message : 'Unexpected Error'
     return NextResponse.json({ message }, { status: 500 })
   }

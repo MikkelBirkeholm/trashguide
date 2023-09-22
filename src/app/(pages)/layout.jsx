@@ -1,4 +1,3 @@
-// Imports Globally Applied Styles
 import '../../styles/globals.scss'
 
 import Header from '@/components/Header/Header'
@@ -12,9 +11,6 @@ export const metadata = {
   title: 'Affaldsguiden',
   description: 'Få styr på dit sh*t',
 }
-
-// Remember to set language on html
-
 export default function RootLayout({ children }) {
   return (
     <html lang="da-DK">

@@ -1,9 +1,9 @@
+import styles from './styles.module.scss'
+import { cookies } from 'next/headers'
 import { RatingStar } from '@/components/Singles/RatingStar'
 import { calcReviewAvg } from '@/utils/calcReviewAvg'
-import styles from './styles.module.scss'
 import { ReviewForm } from './Anmeldelser/ReviewForm'
 import { MapWrapper } from './Maps/MapWrapper'
-import { cookies } from 'next/headers'
 import { Reviews } from './Anmeldelser/Reviews'
 
 export const StationView = async ({ data, org }) => {

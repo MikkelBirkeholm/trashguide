@@ -5,9 +5,14 @@ export async function GET(request, { params }) {
   const cookieStore = cookies()
   const token = cookieStore.get('token')
   const user_id = cookieStore.get('user_id')
+
+  // den anmeldese som skal slettes
   const review_id = params.id[0]
+
+  // den bruger som prøver at slette
   const request_id = params.id[1]
 
+  // hvis bruger matcher med den bruger som er logget ind
   if (request_id == user_id.value) {
     try {
       const headers = new Headers()

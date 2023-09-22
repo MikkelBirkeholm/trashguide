@@ -1,15 +1,12 @@
 import '../../styles/globals.scss'
 
-// Setup Fonts
 import { Open_Sans } from 'next/font/google'
 const open_sans = Open_Sans({ subsets: ['latin'], variable: '--font-opensans' })
 
 export const metadata = {
   title: 'Affaldsguiden',
-  description: 'Login',
+  description: 'Min Side',
 }
-
-// Remember to set language on html
 
 export default function RootLayout({ children }) {
   return (
