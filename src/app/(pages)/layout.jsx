@@ -9,7 +9,7 @@ const open_sans = Open_Sans({ subsets: ['latin'], variable: '--font-opensans' })
 
 export const metadata = {
   title: 'Affaldsguiden',
-  description: 'Få styr på dit sh*t',
+  description: 'Sund Sortering',
 }
 export default function RootLayout({ children }) {
   return (

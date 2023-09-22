@@ -105,13 +105,13 @@ const StepOne = ({ callback, data }) => {
     handleSubmit,
     register,
     watch,
-    setValue,
     formState: { errors },
   } = useForm({
     defaultValues: { beholder: data },
   })
 
   useEffect(() => {
+    // henter beholdere
     async function getBeholderListe() {
       const res = await fetch('http://localhost:4000/containers')
       const data = await res.json()
